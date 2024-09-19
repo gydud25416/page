@@ -1,0 +1,6 @@
+.wrap_profile{padding:120px 80px 100px 80px; }
+.wrap_profile .profile ul{padding-top:80px; display: flex; justify-content: space-between; }
+.wrap_profile .profile ul li{width:28%;}
+.wrap_profile .profile ul li .h{font-size: 24px; font-weight: 700; line-height: 36px; padding:20px 0;}
+.wrap_profile .profile .t{font-size: 18px; line-height: 30px; padding-bottom:20px;}
+.wrap_profile .profile a {font-size: 18px; font-weight: 700; line-height: 30px; color:#18A0FB;}
