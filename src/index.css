@@ -14,7 +14,7 @@ code {
 
 *{margin:0; padding:0;}
 li, ul, dt, dd, dl, a{list-style: none; text-decoration: none;}
-
+button{border:0; background:none; cursor: pointer;}
 .ff-tit{font-family: "Exo 2";}
 
 .title h1{font-family: "Exo 2"; font-size: 48px; font-weight: 400; line-height: 72px; }

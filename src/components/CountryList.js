@@ -11,7 +11,7 @@ export default function CountryList(){
             <div className="country_sec01">
                 <ul className="filter_country">
                     <li>
-                        <button>All</button>
+                        <button className="on">All</button>
                     </li>
                     <li>
                         <button>Asia</button>
@@ -28,7 +28,7 @@ export default function CountryList(){
                 </ul>
                 <ul className="filter_total">
                     <li>
-                        <button>1000</button>
+                        <button className="on">1000</button>
                     </li> 
                     <li>
                         <button>1300</button>

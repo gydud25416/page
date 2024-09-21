@@ -1,1 +1,14 @@
-.wrap_country{ padding:120px 80px 100px 80px;}
+.wrap_country{ padding:120px 0px 100px 80px;}
+
+.wrap_country .country_sec01{display: flex; padding :60px 0; gap:20px;}
+.wrap_country .country_sec01>ul{padding:5px; border:1px solid rgba(0,0,0,0.5); border-radius:25px; display: flex; }
+.wrap_country .country_sec01>ul button{font-family: "Exo 2"; }
+.wrap_country .country_sec01>ul button.on {background:#000;color:#fff;  }
+
+.wrap_country .country_sec01 .filter_country button{padding:10px 20px; border-radius: 25px;}
+
+.wrap_country .country_sec01 .filter_total {gap:75px;}
+.wrap_country .country_sec01 .filter_total li{position:relative;}
+.wrap_country .country_sec01 .filter_total li:not(li:first-child)::before{content:''; display: block; width:115px; height:10px;  background:#999; position:absolute; top:50%; left:-95px; transform:translateY(-50%); z-index:-1;}
+.wrap_country .country_sec01 .filter_total li.on:not(li:first-child)::before{background:#000;}
+.wrap_country .country_sec01 .filter_total button{width:40px; height:40px; border-radius: 50%; background:#999; color:#fff;}

@@ -2,6 +2,7 @@ import country1 from '../assets/image.jpg'
 import country2 from '../assets/image2.jpg'
 import country3 from '../assets/image3.jpg'
 import country4 from '../assets/image4.jpg'
+import './CountryItem.css'
 
 
 const country=[
@@ -45,7 +46,7 @@ export default function CountryItem(){
                         <li>{it.name}</li>
                         <li>{it.total}</li>
                     </ul>
-                    <img src={it.img} alt={it.name}/>
+                    <div style={{backgroundImage:`url(${it.img})`, backgroundSize:'cover'}}></div>
                     <p>{it.description}</p>
                 </li>
             ))}
