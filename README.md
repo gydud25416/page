@@ -1,70 +1,93 @@
-# Getting Started with Create React App
+# 배열 랜덤 섞기
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+---
 
-## Available Scripts
+## 피셔-예이츠 알고리즘
 
-In the project directory, you can run:
+```jsx
+function shuffleArray(array) {
+  for (let i = array.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [array[i], array[j]] = [array[j], array[i]]; // 요소 교환 (구조 분해 할당)
+  }
+  return array;
+}
 
-### `npm start`
+const arr = [1, 2, 3, 4, 5]; 
+console.log(shuffleArray(arr)); // 배열이 랜덤하게 섞인 결과 출력
+```
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+### Math.random()
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- 0이상 1미만의 난수이다.
+- Math.random() * 4를 하면 0이상 4미만의 난수를 얻을 수 있다. 이것을 Math.floor로 감사면 0이상 4미만의 정수를 얻을 수 있다.
 
-### `npm test`
+### 구조 분해 할당
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- 배열로부터 값을 추출해서 다시 새로운 배열로 재조립한다.
+- 예시
 
-### `npm run build`
+```jsx
+let a = 5;
+let b = 10;
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+[a, b] = [b, a] //a와 b의 값을 서로 교환
+console.log(a); //10
+console.logA(b); //5
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+---
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## 리액트 적용
 
-### `npm run eject`
+```jsx
+const profile=[
+    {
+        id:1,
+        img:profile1,
+        title:'Nemo enim ipsam',
+        description:'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor.'
+    },
+    {
+        id:2,
+        img:profile2,
+        title:'Sed ut perspiciatis',
+        description:'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.'
+    },
+    {
+        id:3,
+        img:profile3,
+        title:'Lorem ipsum dolor',
+        description:'Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.'
+    }
+]
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+export default function Profile(){
+    const [shuffProfile, setShuffProfile] = useState([]);
+    function shuffled(array){
+        for(let i = array.length - 1; i > 0; i--){
+            const j = Math.floor(Math.random() * (i + 1));
+            [array[i], array[j]] = [array[j], array[i]];
+        }
+        
+        return array 
+    } 
+    useEffect(()=>{
+        setShuffProfile(shuffled(profile));
+    },[])
+    
+    return(
+        <section className='wrap_profile'>
+        (...)
+                <ul>
+                    {shuffProfile.map((it)=>(
+                        <li key={it.id}>
+                        (...)
+                        </li>
+                    ))} 
+                </ul> 
+          (...)
+        </section>
+    )
+}
+```
