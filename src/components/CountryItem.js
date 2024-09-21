@@ -1,20 +1,16 @@
-
 import './CountryItem.css'
-
-
-
+ 
 export default function CountryItem({countryData}){
 
     return(
-        <>
-        
-            {countryData.length === 0 ? (
+        <> 
+            {countryData.length === 0 ? ( // 게시물이 없을 때
                 <ul className="wrap_item">
                     <li>
                         There are a total of <b style={{color:'#0082cf'}}>0</b> posts.
                     </li>
                 </ul>
-            ):(
+            ):(// 게시물이 있을 때
                 <ul className="wrap_item">
                 {countryData.map((it)=>(
                     <li key={it.id}>
@@ -27,9 +23,7 @@ export default function CountryItem({countryData}){
                     </li>
                 ))}
                 </ul>
-            )}
-            
-        
+            )} 
         </>
     )
 }
