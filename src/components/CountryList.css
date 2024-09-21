@@ -5,6 +5,7 @@
 .wrap_country .country_sec01>ul button{font-family: "Exo 2"; }
 .wrap_country .country_sec01>ul button.on {background:#000;color:#fff;  }
 
+.wrap_country .country_sec01 .filter_country{gap:10px;}
 .wrap_country .country_sec01 .filter_country button{padding:10px 20px; border-radius: 25px;}
 
 .wrap_country .country_sec01 .filter_total {gap:75px;}
