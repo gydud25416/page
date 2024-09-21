@@ -5,7 +5,6 @@ import './CountryItem.css'
 
 export default function CountryItem({countryData}){
 
-    console.log(countryData)
     return(
         <>
         

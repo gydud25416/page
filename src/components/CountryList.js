@@ -4,7 +4,7 @@ import country2 from '../assets/image2.jpg'
 import country3 from '../assets/image3.jpg'
 import country4 from '../assets/image4.jpg'
 import './CountryList.css'
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export const country = [
     {
@@ -43,18 +43,26 @@ export const country = [
 
 export default function CountryList(){
     const [filterCountry, setFilterCountry] = useState('all');
+    const [filterTotal, setFilterTotal] = useState(1000);
     const [countryData, setCountryData] = useState(country);
 
     function onCountry(e){
         setFilterCountry(e);
-        const result = country;
-        setCountryData(result)
-        if(e !== 'all'){
-            const result = country.filter((it)=> it.country === e);
-            setCountryData(result)
-        }
-        
     }
+
+    function onTotal(e){
+        setFilterTotal(e);
+    }
+
+    useEffect(()=>{ // 국가, 토탈수 필터링
+        let result = country;
+        if(filterCountry !== 'all'){
+            result = result.filter((it)=> it.country === filterCountry);
+        } 
+        result = result.filter((it)=> it.total >= filterTotal);
+        setCountryData(result);
+
+    },[filterCountry, filterTotal])
 
     return(
         <section className="wrap_country">
@@ -81,16 +89,16 @@ export default function CountryList(){
                 </ul>
                 <ul className="filter_total">
                     <li>
-                        <button className="on">1000</button>
+                        <button onClick={()=>onTotal(1000)} className={filterTotal >= 1000? 'on':''}>1000</button>
                     </li> 
-                    <li>
-                        <button>1300</button>
+                    <li className={filterTotal >= 1300? 'on':''}>
+                        <button onClick={()=>onTotal(1300)} className={filterTotal >= 1300? 'on':''}>1300</button>
                     </li> 
-                    <li>
-                        <button>1700</button>
+                    <li className={filterTotal >= 1700? 'on':''}>
+                        <button onClick={()=>onTotal(1700)} className={filterTotal >= 1700? 'on':''}>1700</button>
                     </li> 
-                    <li>
-                        <button>2000</button>
+                    <li className={filterTotal >= 2000? 'on':''}>
+                        <button onClick={()=>onTotal(2000)} className={filterTotal >= 2000? 'on':''}>2000</button>
                     </li>
                 </ul>
             </div>
