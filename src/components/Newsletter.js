@@ -69,7 +69,7 @@ export default function Newsletter(){
             <div className="newsletter_sec03">
                 <p className='ff-tit'>Subscribe to our newsletter</p>
                 <div>
-                    <input type="email"  className={`${emailBorder}`} value={email} ref={emailRef} onChange={handleOnEmailChange} placeholder="Enter your email"/>
+                    <input type="email" maxLength={35} className={`${emailBorder}`} value={email} ref={emailRef} onChange={handleOnEmailChange} placeholder="Enter your email"/>
                     <button onClick={onSubmit} className={`${emailTest === true? 'on':''}`}><img src={submit} alt="전송" /></button>
                     <p className={`invalid  ff-tit ${emailTest === true? '':'on'}`}>Please enter a valid email!</p>
                 </div>

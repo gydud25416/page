@@ -44,7 +44,7 @@ export default function Profile(){
     return(
         <section className='wrap_profile'>
             <div className="title">
-                <h1>Snap photos and share like<br/>never before</h1>
+                <h1>Snap photos and share like <br/>never before</h1>
             </div>
             <div className='profile'>
                 <ul>

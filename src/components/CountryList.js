@@ -61,7 +61,6 @@ export default function CountryList(){
         } 
         result = result.filter((it)=> it.total >= filterTotal);
         setCountryData(result);
-
     },[filterCountry, filterTotal])
 
     return(

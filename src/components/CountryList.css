@@ -13,3 +13,10 @@
 .wrap_country .country_sec01 .filter_total li:not(li:first-child)::before{content:''; transition:0.3s; display: block; width:115px; height:10px;  background:#999; position:absolute; top:50%; left:-95px; transform:translateY(-50%); z-index:-1;}
 .wrap_country .country_sec01 .filter_total li.on:not(li:first-child)::before{background:#000;}
 .wrap_country .country_sec01 .filter_total button{width:40px; height:40px; border-radius: 50%; background:#999; transition:0.3s; color:#fff;}
+@media screen and (max-width:550px){
+    .wrap_country{padding:60px 0px 50px 10px;}
+    .wrap_country .country_sec01{padding:50px 0 30px 0; gap:10px;}
+    .wrap_country .country_sec01 .filter_country button{padding:8px 10px;}
+    .wrap_country .country_sec01 .filter_total{gap:54px;}
+    .wrap_country .country_sec01 .filter_total li:not(li:first-child)::before{width:85px; left:-75px;}
+  }

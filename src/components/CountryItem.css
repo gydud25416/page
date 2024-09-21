@@ -20,4 +20,10 @@
 .wrap_item>li>ul li:last-child{font-size: 16px; font-weight: 400;}
 
 .wrap_item>li>div{display: block; width:360px; border-radius: 10px;  margin:10px 0 20px 0; height:225px; max-height:225px;}
-.wrap_item>li> p{  display:-webkit-box; -webkit-line-clamp : 6; -webkit-box-orient:vertical; line-clamp:6; overflow: hidden; }
+.wrap_item>li> p{  display:-webkit-box; -webkit-line-clamp : 6; -webkit-box-orient:vertical; overflow: hidden; }
+
+@media screen and (max-width:550px){
+    .wrap_item>li{width:250px;}
+    .wrap_item>li>div{width:250px; max-height: 150px;}
+    .wrap_item{gap:25px;}
+  }

@@ -4,3 +4,12 @@
 .wrap_profile .profile ul li .h{font-size: 24px; font-weight: 700; line-height: 36px; padding:20px 0;}
 .wrap_profile .profile .t{font-size: 18px; line-height: 30px; padding-bottom:20px;}
 .wrap_profile .profile a {font-size: 18px; font-weight: 700; line-height: 30px; color:#18A0FB;}
+
+@media screen and (max-width:550px){
+    .wrap_profile{padding:60px 10px 50px 10px;}
+    .wrap_profile .profile ul{flex-wrap: wrap; gap:30px; padding-top:50px;}
+    .wrap_profile .profile ul li{width:100%; display: flex; flex-wrap: wrap; align-items: center;}
+    .wrap_profile .profile ul li .h{font-size: 5vw; line-height: 1; padding:15px 10px;}
+    .wrap_profile .profile .t{font-size: 4vw; line-height: 1.4; padding-bottom:10px;}
+    .wrap_profile .profile a{font-size: 4vw;}
+}
