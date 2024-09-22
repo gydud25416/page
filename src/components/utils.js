@@ -17,6 +17,7 @@ export const getProfileImg = (profileId) => {
         case "3":
             return profile3;
         default:
+            return null;
     }
 }
 
@@ -32,5 +33,6 @@ export const getCountryImg = (countryId) => {
         case "4":
             return country4;
         default:
+            return null;
     }
 }
