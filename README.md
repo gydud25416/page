@@ -94,7 +94,7 @@ export default function Profile(){
 
 # css를 이용한 말줄임 처리 
 
-```
+---
 
 ```jsx
 display:-webkit-box; //box로 지정
