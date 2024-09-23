@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useRef, useState } from 'react'
 import submit from '../assets/paper-plane 1.png'
 import './Newsletter.css'
-import useUnplash from '../hooks/useUnplash'
+import useUnsplash from '../hooks/useUnsplash'
 
 export default function Newsletter() {
     const [bgImg, setBgImg] = useState(); // 배경 이미지 URL
@@ -10,7 +10,7 @@ export default function Newsletter() {
     const [emailBorder, setEmailBorder] = useState(''); // 입력 테두리 스타일
     const emailRef = useRef(null); // 이메일 입력창 REF
     const bg_img = localStorage.getItem('bgImg');
-    useUnplash('https://api.unsplash.com/photos/random?client_id=-skz5oPhTXsEz7Xt838FwxE-ABdPJlYaSk3PbE4aVko');
+    useUnsplash('https://api.unsplash.com/photos/random?client_id=-skz5oPhTXsEz7Xt838FwxE-ABdPJlYaSk3PbE4aVko');
 
     useEffect(() => { // 로컬스토리지에서 이미지 url 가져오기
         if (bg_img) {
