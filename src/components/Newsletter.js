@@ -22,7 +22,7 @@ export default function Newsletter() {
         setEmail(emailRef.current.value);
     }
 
-    // 이메일 유효성 검사 
+    // 이메일 유효성 검사 메모이제이션
     const isValidEmail = useMemo(() => {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 아이디@사이트.도메인
         return emailRegex.test(email);

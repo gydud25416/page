@@ -1,7 +1,7 @@
 import { country } from "../data";
 import CountryItem from "./CountryItem";
 import './CountryList.css'
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 
 
 export default function CountryList() {
@@ -17,14 +17,19 @@ export default function CountryList() {
         setFilterTotal(e);
     }
 
-    useEffect(() => { // 국가, 토탈수 필터링
+    // 국가, 토탈수 필터링 메모이제이션
+    const filteredCountryData = useMemo(() => {
         let result = country;
-        if (filterCountry !== 'all') {
+        if (filterCountry !== 'all') { // 국가 필터링
             result = result.filter((it) => it.country === filterCountry);
         }
-        result = result.filter((it) => it.total >= filterTotal);
-        setCountryData(result);
+        // total 필터링
+        return result.filter((it) => it.total >= filterTotal);
     }, [filterCountry, filterTotal])
+
+    useEffect(() => {
+        setCountryData(filteredCountryData);
+    }, [filteredCountryData])
 
     return (
         <section className="wrap_country">
