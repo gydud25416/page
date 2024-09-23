@@ -12,6 +12,9 @@ export default function useUnplash(url) {
                     localStorage.setItem('bgImg', res.data.urls.regular)
                 })
                 .catch(error => {
+                    if(error.response.status === 404){
+                        localStorage.removeItem('bgImg');
+                    }
                     console.error(error);
                 })
         }
