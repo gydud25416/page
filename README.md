@@ -92,8 +92,10 @@ export default function Profile(){
 }
 ```
 
-# css를 이용한 말줄임 처리
+# css를 이용한 말줄임 처리 
+
 ```
+
 ```jsx
 display:-webkit-box; //box로 지정
 -webkit-line-clamp : 1 //1줄까지 보이게하기
