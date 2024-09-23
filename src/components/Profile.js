@@ -1,28 +1,8 @@
 import { useEffect } from 'react'
 import './Profile.css'
 import { useState } from 'react'
-import { getProfileImg } from './utils';
+import { profile } from '../data';
 
-const profile = [
-    {
-        id: 1,
-        img: getProfileImg(1),
-        title: 'Nemo enim ipsam',
-        description: 'Consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor.'
-    },
-    {
-        id: 2,
-        img: getProfileImg(2),
-        title: 'Sed ut perspiciatis',
-        description: 'Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem.'
-    },
-    {
-        id: 3,
-        img: getProfileImg(3),
-        title: 'Lorem ipsum dolor',
-        description: 'Amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis.'
-    }
-]
 
 export default function Profile() {
     const [shuffProfile, setShuffProfile] = useState([]);

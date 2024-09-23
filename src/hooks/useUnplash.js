@@ -11,6 +11,9 @@ export default function useUnplash(url) {
                     setData(res.data.urls.regular);
                     localStorage.setItem('bgImg', res.data.urls.regular)
                 })
+                .catch(error => {
+                    console.error(error);
+                })
         }
     }, [url])
     return data
