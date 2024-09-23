@@ -1,14 +1,14 @@
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import submit from '../assets/paper-plane 1.png'
 import './Newsletter.css'
 import useUnplash from '../hooks/useUnplash'
 
 export default function Newsletter() {
-    const [bgImg, setBgImg] = useState();
-    const [email, setEmail] = useState('');
-    const [emailTest, setEmailTest] = useState(true);
-    const [emailBorder, setEmailBorder] = useState('');
-    const emailRef = useRef(null);
+    const [bgImg, setBgImg] = useState(); // 배경 이미지 URL
+    const [email, setEmail] = useState(''); // 입력 이메일
+    const [emailTest, setEmailTest] = useState(true); // 이메일 유효성 검사 결과
+    const [emailBorder, setEmailBorder] = useState(''); // 입력 테두리 스타일
+    const emailRef = useRef(null); // 이메일 입력창 REF
     const bg_img = localStorage.getItem('bgImg');
     useUnplash('https://api.unsplash.com/photos/random?client_id=-skz5oPhTXsEz7Xt838FwxE-ABdPJlYaSk3PbE4aVko');
 
@@ -22,11 +22,15 @@ export default function Newsletter() {
         setEmail(emailRef.current.value);
     }
 
-    useEffect(() => {
-        const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 아이디@사이트.도메인
+    // 이메일 유효성 검사 
+    const isValidEmail = useMemo(() => {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 아이디@사이트.도메인
+        return emailRegex.test(email);
+    }, [email])
 
+    useEffect(() => {
         if (email.length > 0) { // 1글자 이상 입력
-            if (!emailTest.test(email)) { //이메일 유효성 검사 실패
+            if (!isValidEmail) { //이메일 유효성 검사 실패
                 setEmailTest(false);
                 setEmailBorder('invalid');
             } else {// 유효성 검사 성공
@@ -37,25 +41,27 @@ export default function Newsletter() {
             setEmailTest(true);
             setEmailBorder('');
         }
-    }, [email])
+    }, [email, isValidEmail])
 
     function onSubmit() {
-        const emailTest = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 아이디@사이트.도메인
         if (email.length < 1) {// 입력 글자 없음 
             alert("이메일을 입력해주세요");
             emailRef.current.focus(); //입력창 포커스 
             return false;
-        } else { //한글자 이상 입력
-            if (!emailTest.test(email)) { //이메일 유효성 검사 실패
-                return false;
-            } else {// 유효성 검사 성공
-                if (window.confirm("뉴스레터를 구독하시겠습니까?")) {
-                    alert("구독되었습니다. \n뉴스레터는 메일을 통해 확인이 가능합니다.");
-                    setEmail('');
-                }
-            }
         }
-    }
+
+        if (!isValidEmail) { //이메일 유효성 검사 실패 (클릭 제어)
+            return false;
+        }
+
+        //유효성 검사 성공
+        if (window.confirm("뉴스레터를 구독하시겠습니까?")) {
+            alert("구독되었습니다. \n뉴스레터는 메일을 통해 확인이 가능합니다.");
+            setEmail(''); //이메일 초기화
+        }
+    };
+
+
     return (
         <section className="wrap_newsletter" style={{ backgroundImage: `url(${bgImg})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
             <div className='bg_black'></div>
