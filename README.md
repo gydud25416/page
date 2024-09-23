@@ -91,3 +91,15 @@ export default function Profile(){
     )
 }
 ```
+
+# css를 이용한 말줄임 처리
+```
+```jsx
+display:-webkit-box; //box로 지정
+-webkit-line-clamp : 1 //1줄까지 보이게하기
+-webkit-box-orient:vertical // 박스의 흐름방향(수직)
+```
+- 추가로 overflow:hidden을 추가하여 1줄 아래로는 숨김처리를 할 수 있다. 
+<aside>
+💡 display:box 속성은 모바일 반응형으로 적용된다.
+</aside>
