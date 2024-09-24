@@ -3,11 +3,11 @@ import CountryItem from "./CountryItem";
 import './CountryList.css'
 import { useEffect, useMemo, useState } from "react";
 
-// 국가+카테고리 섹션 컴포넌트 
+// 카드 List+카테고리 섹션 컴포넌트 
 export default function CountryList() {
     const [filterCountry, setFilterCountry] = useState('all'); // 대륙 카테고리
     const [filterTotal, setFilterTotal] = useState(1000); //조회수 카테고리
-    const [countryData, setCountryData] = useState(country); //국가 List 데이터 
+    const [countryData, setCountryData] = useState(country); //카드 데이터 
 
     //대륙 카테고리 state 변경
     function onCountry(e) {
@@ -20,19 +20,19 @@ export default function CountryList() {
     }
 
     /**
-     * state 변화 시 전체 country 데이터 불러오기
+     * state 변화 시 전체 카드 데이터 불러오기
      * 대륙 카테고리 -> 조회수 순으로 필터링
-     * 메모이제이션
+     * 필터링 결과 메모이제이션
      */
     const filteredCountryData = useMemo(() => {
-        let result = country;
+        let result = country; // 전체 카드 데이터 
         if (filterCountry !== 'all') { // 대륙 필터링
             result = result.filter((it) => it.country === filterCountry);
         }
         return result.filter((it) => it.total >= filterTotal); //조회수 필터링
     }, [filterCountry, filterTotal])
     
-    //카테고리 필터링 결과 
+    //카테고리 필터링 결과 호출
     useEffect(() => {
         setCountryData(filteredCountryData);
     }, [filteredCountryData])

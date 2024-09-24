@@ -10,11 +10,12 @@ export default function Newsletter() {
     const [emailTest, setEmailTest] = useState(true); // 이메일 유효성 검사 결과
     const [emailBorder, setEmailBorder] = useState(''); // 입력 테두리 스타일
     const emailRef = useRef(null); // 이메일 입력창 REF
-    const bg_img = localStorage.getItem('bgImg'); // 로컬스토리지 url value값
+    const bg_img = localStorage.getItem('bgImg'); // 로컬스토리지 이미지 url
     useUnsplash('https://api.unsplash.com/photos/random?client_id=-skz5oPhTXsEz7Xt838FwxE-ABdPJlYaSk3PbE4aVko'); // API 훅 URL 전달
 
     /**
-     * 로컬스토리지에서 이미지 url 가져오기
+     * 로컬스토리지에 URL이 있다면 || 바뀌면
+     * 배경 이미지 url state 변경
      */
     useEffect(() => { 
         if (bg_img) {
@@ -23,7 +24,7 @@ export default function Newsletter() {
     }, [bg_img])
 
     /**
-     * onChage할 때 입력창에 문구 표시
+     * onChage(입력)할 때 input(입력창)에 문구 업데이트
      */
     function handleOnEmailChange() {
         setEmail(emailRef.current.value);
@@ -37,7 +38,8 @@ export default function Newsletter() {
     }, [email])
 
     /**
-     * onChange 할 때마다 유효성 검사 실시 
+     * onChange(입력)할 때마다 유효성 검사 실시 
+     * input 하단 invaild 텍스트(setEmailTest) && 테두리(setEmailBorder)로 결과 노출
      */
     useEffect(() => {
         if (email.length > 0) { // 1글자 이상 입력
@@ -64,14 +66,14 @@ export default function Newsletter() {
             return false;
         }
 
-        if (!isValidEmail) { //이메일 유효성 검사 실패 (클릭 제어)
+        if (!isValidEmail) { //이메일 유효성 검사 실패 (전송 버튼 클릭 비활성화)
             return false;
         }
 
         //유효성 검사 성공
         if (window.confirm("뉴스레터를 구독하시겠습니까?")) {
             alert("구독되었습니다. \n뉴스레터는 메일을 통해 확인이 가능합니다.");
-            setEmail(''); //이메일 초기화
+            setEmail(''); //이메일 입력창 초기화
         }
     };
 
