@@ -6,12 +6,12 @@ import useUnsplash from '../hooks/useUnsplash'
 // 뉴스레터 구독 섹션 컴포넌트
 export default function Newsletter() {
     const [bgImg, setBgImg] = useState(); // 배경 이미지 URL
-    const [email, setEmail] = useState(''); // 입력 이메일
+    const [email, setEmail] = useState(''); // 입력한 이메일 state
     const [emailTest, setEmailTest] = useState(true); // 이메일 유효성 검사 결과
     const [emailBorder, setEmailBorder] = useState(''); // 입력 테두리 스타일
-    const emailRef = useRef(null); // 이메일 입력창 REF
+    const emailRef = useRef(null); // 이메일 입력창(input)
     const bg_img = localStorage.getItem('bgImg'); // 로컬스토리지 이미지 url
-    useUnsplash('https://api.unsplash.com/photos/random?client_id=-skz5oPhTXsEz7Xt838FwxE-ABdPJlYaSk3PbE4aVko'); // API 훅 URL 전달
+    useUnsplash('https://api.unsplash.com/photos/random?client_id=-skz5oPhTXsEz7Xt838FwxE-ABdPJlYaSk3PbE4aVko'); // API 훅에 URL 전달
 
     /**
      * 로컬스토리지에 URL이 있다면 || 바뀌면
@@ -30,7 +30,7 @@ export default function Newsletter() {
         setEmail(emailRef.current.value);
     }
 
-    // 이메일 유효성 검사 메모이제이션
+    // 이메일 유효성 검사 결과 메모이제이션
     const isValidEmail = useMemo(() => {
         // 이메일 유효성 검사 정규표현식
         const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
