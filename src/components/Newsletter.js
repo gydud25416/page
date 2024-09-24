@@ -39,7 +39,7 @@ export default function Newsletter() {
 
     /**
      * onChange(입력)할 때마다 유효성 검사 실시 
-     * input 하단 invaild 텍스트(setEmailTest) && 테두리(setEmailBorder)로 결과 노출
+     * input 하단 invalid 텍스트(setEmailTest) && 테두리(setEmailBorder)로 결과 노출
      */
     useEffect(() => {
         if (email.length > 0) { // 1글자 이상 입력
