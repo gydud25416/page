@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 /**
  * axios 라이브러리를 이용한
- * 이미지 API 불러오기
+ * 이미지 REST API 호출
  */
 export default function useUnplash(url) {
     const [data, setData] = useState([]);
