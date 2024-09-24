@@ -13,7 +13,7 @@ export default function Profile() {
             [array[i], array[j]] = [array[j], array[i]]; //요소 교환
         }
 
-        return array
+        return array;
     }
     useEffect(() => {
         setShuffProfile(shuffled(profile)); //배열 랜덤으로 섞인 결과

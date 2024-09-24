@@ -35,7 +35,7 @@ export default function Newsletter() {
                 setEmailBorder('invalid');
             } else {// 유효성 검사 성공
                 setEmailTest(true);
-                setEmailBorder('valid')
+                setEmailBorder('valid');
             }
         } else { //입력 글자 없음
             setEmailTest(true);
