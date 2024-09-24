@@ -7,6 +7,7 @@ import country2 from '../assets/image2.jpg'
 import country3 from '../assets/image3.jpg'
 import country4 from '../assets/image4.jpg'
 
+// 프로필 이미지 불러오기
 export const getProfileImg = (profileId) => {
     const targetImgId = String(profileId)
     switch (targetImgId) {
@@ -21,6 +22,7 @@ export const getProfileImg = (profileId) => {
     }
 }
 
+// 국가 List 이미지 불러오기
 export const getCountryImg = (countryId) => {
     const targetImgId = String(countryId)
     switch (targetImgId) {

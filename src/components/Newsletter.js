@@ -3,31 +3,42 @@ import submit from '../assets/paper-plane 1.png'
 import './Newsletter.css'
 import useUnsplash from '../hooks/useUnsplash'
 
+// 뉴스레터 구독 섹션 컴포넌트
 export default function Newsletter() {
     const [bgImg, setBgImg] = useState(); // 배경 이미지 URL
     const [email, setEmail] = useState(''); // 입력 이메일
     const [emailTest, setEmailTest] = useState(true); // 이메일 유효성 검사 결과
     const [emailBorder, setEmailBorder] = useState(''); // 입력 테두리 스타일
     const emailRef = useRef(null); // 이메일 입력창 REF
-    const bg_img = localStorage.getItem('bgImg');
-    useUnsplash('https://api.unsplash.com/photos/random?client_id=-skz5oPhTXsEz7Xt838FwxE-ABdPJlYaSk3PbE4aVko');
+    const bg_img = localStorage.getItem('bgImg'); // 로컬스토리지 url value값
+    useUnsplash('https://api.unsplash.com/photos/random?client_id=-skz5oPhTXsEz7Xt838FwxE-ABdPJlYaSk3PbE4aVko'); // API 훅 URL 전달
 
-    useEffect(() => { // 로컬스토리지에서 이미지 url 가져오기
+    /**
+     * 로컬스토리지에서 이미지 url 가져오기
+     */
+    useEffect(() => { 
         if (bg_img) {
             setBgImg(bg_img);
         }
     }, [bg_img])
 
+    /**
+     * onChage할 때 입력창에 문구 표시
+     */
     function handleOnEmailChange() {
         setEmail(emailRef.current.value);
     }
 
     // 이메일 유효성 검사 메모이제이션
     const isValidEmail = useMemo(() => {
-        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // 이메일 유효성 검사 정규표현식
+        // 이메일 유효성 검사 정규표현식
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; 
         return emailRegex.test(email);
     }, [email])
 
+    /**
+     * onChange 할 때마다 유효성 검사 실시 
+     */
     useEffect(() => {
         if (email.length > 0) { // 1글자 이상 입력
             if (!isValidEmail) { //이메일 유효성 검사 실패
@@ -43,6 +54,9 @@ export default function Newsletter() {
         }
     }, [email, isValidEmail])
 
+    /**
+     * 이메일 폼 전송
+     */
     function onSubmit() {
         if (email.length < 1) {// 입력 글자 없음 
             alert("이메일을 입력해주세요");

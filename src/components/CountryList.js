@@ -3,30 +3,36 @@ import CountryItem from "./CountryItem";
 import './CountryList.css'
 import { useEffect, useMemo, useState } from "react";
 
-
+// 국가+카테고리 섹션 컴포넌트 
 export default function CountryList() {
-    const [filterCountry, setFilterCountry] = useState('all');
-    const [filterTotal, setFilterTotal] = useState(1000);
-    const [countryData, setCountryData] = useState(country);
+    const [filterCountry, setFilterCountry] = useState('all'); // 대륙 카테고리
+    const [filterTotal, setFilterTotal] = useState(1000); //조회수 카테고리
+    const [countryData, setCountryData] = useState(country); //국가 List 데이터 
 
+    //대륙 카테고리 state 변경
     function onCountry(e) {
         setFilterCountry(e);
     }
 
+    //조회수 카테고리 state 변경
     function onTotal(e) {
         setFilterTotal(e);
     }
 
-    // 국가, 토탈수 필터링 메모이제이션
+    /**
+     * state 변화 시 전체 country 데이터 불러오기
+     * 대륙 카테고리 -> 조회수 순으로 필터링
+     * 메모이제이션
+     */
     const filteredCountryData = useMemo(() => {
         let result = country;
-        if (filterCountry !== 'all') { // 국가 필터링
+        if (filterCountry !== 'all') { // 대륙 필터링
             result = result.filter((it) => it.country === filterCountry);
         }
-        // total 필터링
-        return result.filter((it) => it.total >= filterTotal);
+        return result.filter((it) => it.total >= filterTotal); //조회수 필터링
     }, [filterCountry, filterTotal])
-
+    
+    //카테고리 필터링 결과 
     useEffect(() => {
         setCountryData(filteredCountryData);
     }, [filteredCountryData])

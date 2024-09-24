@@ -1,6 +1,10 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
 
+/**
+ * axios 라이브러리를 이용한
+ * 이미지 API 불러오기
+ */
 export default function useUnplash(url) {
     const [data, setData] = useState([]);
     useEffect(() => {
@@ -13,11 +17,15 @@ export default function useUnplash(url) {
                 }
             })
             .catch(error => {
-                if (error.response.status > 400 && error.response.status < 500) {
+                /**
+                 * HTTP 상태코드가 클라이언트 에러일 때 
+                 * 로컬스토리지 이미지 url 삭제
+                 */
+                if (error.status > 400 && error.status < 500) {
                     localStorage.removeItem('bgImg');
                 }
                 console.error(error);
             })
     }, [url])
-    return data
+    return data;
 }

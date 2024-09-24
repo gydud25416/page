@@ -1,5 +1,5 @@
 import './CountryItem.css'
-
+// 국가 List 내 item 컴포넌트 
 export default function CountryItem({ countryData }) {
 
     return (
