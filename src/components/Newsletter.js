@@ -24,7 +24,7 @@ export default function Newsletter() {
 
     // 이메일 유효성 검사 메모이제이션
     const isValidEmail = useMemo(() => {
-        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; // 아이디@사이트.도메인
+        const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/; // 이메일 유효성 검사 정규표현식
         return emailRegex.test(email);
     }, [email])
 
