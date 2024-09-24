@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import './Profile.css'
 import { useState } from 'react'
 import { profile } from '../data';
+import { Link } from 'react-router-dom';
 
 
 export default function Profile() {
@@ -31,7 +32,7 @@ export default function Profile() {
                             <img src={it.img} alt={it.title} />
                             <p className='h'>{it.title}</p>
                             <p className='t'>{it.description}</p>
-                            <a className='ff-tit' href='https://www.naver.com' rel="noreferrer" title='새창열림' target='_blank'>LEARN MORE</a>
+                            <Link to={`/`} className='ff-tit' rel="noreferrer" >LEARN MORE</Link>
                         </li>
                     ))}
                 </ul>
