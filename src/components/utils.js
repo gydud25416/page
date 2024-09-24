@@ -22,7 +22,7 @@ export const getProfileImg = (profileId) => {
     }
 }
 
-// 국가 List 이미지 불러오기
+// 카드 데이터 이미지 불러오기
 export const getCountryImg = (countryId) => {
     const targetImgId = String(countryId)
     switch (targetImgId) {
