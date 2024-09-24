@@ -66,7 +66,7 @@ export default function Newsletter() {
             return false;
         }
 
-        if (!isValidEmail) { //이메일 유효성 검사 실패 (전송 버튼 클릭 비활성화)
+        if (!isValidEmail) { //이메일 유효성 검사 실패
             return false;
         }
 
